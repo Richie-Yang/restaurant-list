@@ -1,6 +1,7 @@
 // Includes necessary packages
 const express = require('express')
 const exphbs = require('express-handlebars')
+const restaurantList = require('./restaurant.json')
 
 // Initialize Express and designate the port
 const app = express()
@@ -13,11 +14,14 @@ app.set('view engine', 'hbs')
 
 //////// Routing Section Starts Here ////////
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { restaurants: restaurantList.results })
 })
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
-  res.render('index')
+  const id = req.params.restaurant_id
+  const restaurant = restaurantList.results.find(restaurantItem => restaurantItem.id.toString() === id)
+
+  res.render('show', { restaurant })
 })
 //////// Routing Section Ends Here ////////
 
