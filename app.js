@@ -13,6 +13,8 @@ app.set('view engine', 'hbs')
 
 
 //////// Routing Section Starts Here ////////
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
 })
