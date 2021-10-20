@@ -1,6 +1,13 @@
-# restaurant-list
+# Restaurant list
 
 Restaurant List, the web service which provides restaurant information for people to search for. The project itself is built upon Node.js + Express backend framework.
+
+## Screenshots
+
+### index.hbs view
+![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/restaurant-index.jpg?raw=true)
+### show.hbs view
+![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/restaurant-show.jpg?raw=true)
 
 ## Features
 1. User can view all restaurant info.
