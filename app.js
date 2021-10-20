@@ -25,6 +25,12 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 
   res.render('show', { restaurant })
 })
+
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim()
+  const restaurants = restaurantList.results.filter(restaurantItem => restaurantItem.name.toLowerCase().includes(keyword.toLowerCase()))
+  res.render('index', { restaurants, keyword })
+})
 //////// Routing Section Ends Here ////////
 
 
