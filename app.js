@@ -15,6 +15,10 @@ app.set('view engine', 'hbs')
 app.get('/', (req, res) => {
   res.render('index')
 })
+
+app.get('/restaurants/:restaurant_id', (req, res) => {
+  res.render('index')
+})
 //////// Routing Section Ends Here ////////
 
 
