@@ -45,5 +45,8 @@ npm run dev
 ```
 PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmjs.com/package/nodemon) first.
 
+## All Branches
+2021/10/26 AC-Homework-A1 (branch)
+
 ## Contributor
 [Richie](https://github.com/Richie-Yang)
