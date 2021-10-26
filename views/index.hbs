@@ -34,12 +34,22 @@
                 <div class="restaurant-category mb-1">
                   <i class="fas fa-utensils pr-2"></i> {{this.category}}
                 </div>
-          
-                <span class="badge badge-pill badge-danger font-weight-normal">
-                  {{this.rating}}
-                  <i class="fas fa-star fa-xs"></i>
-                </span>
-          
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge badge-pill badge-danger font-weight-normal">
+                    {{this.rating}}
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
+                  
+                  <div class="d-flex flex-row flex-sm-column flex-lg-row">
+                    <a class="btn btn-outline-primary py-1 m-1" href="/restaurants/{{this.id}}/edit">Edit</a>
+                    <a class="btn btn-outline-info p-1 m-1" href="/restaurants/{{this.id}}">Detail</a>
+                    <form class="d-inline" action="/restaurants/{{this.id}}/delete">
+                      <button class="btn btn-outline-danger p-1 m-1" type="submit">Delete</button>
+                    </form>
+                  </div>
+                </div>
+
               </div>
             </div>
           </a>
