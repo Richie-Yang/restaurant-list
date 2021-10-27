@@ -3,21 +3,31 @@
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 
-      <p class="mb-1">
-        <span class="text-secondary">
-          <i class="fas fa-utensils pr-2"></i>
-          類別：
-        </span>
-        {{restaurant.category}}
-      </p>
+      <div class="form-row mb-1">
+        <div class="col">
+          <span class="text-secondary">
+            <i class="fas fa-utensils pr-2"></i>
+            類別：
+          </span>
+          {{restaurant.category}}
+        </div>
+        <div class="col">
+          <span class="text-secondary">
+            <i class="fas fa-star pr-1"></i>
+            評分：
+          </span>
+          {{restaurant.rating}}
+        </div>
+      </div>
+
 
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-map-marker-alt pr-2"></i>
           地址：
         </span>
-        {{restaurant.location}}
         <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
+          {{restaurant.location}}
           <i class="fas fa-location-arrow pr-2 fa-xs"></i>
         </a>
       </p>
@@ -37,6 +47,12 @@
       <img class="rounded mx-auto d-block mb-4 w-100"
         src="{{restaurant.image}}" alt="{{restaurant.name}}"
         style="max-width: 600px;">
+
+      {{!-- Both edit and back buttons --}}
+      <div class="d-flex flex-column flex-sm-row justify-content-center mb-5">
+        <a class="btn btn-outline-primary py-1 mb-2 mr-2 w-100" href="/restaurants/{{restaurant._id}}/edit">Edit</a>
+        <a class="btn btn-outline-info mb-2 mr-2 w-100 " href="/">Back</a>
+      </div>
     </div>
   </div>
 </div>
