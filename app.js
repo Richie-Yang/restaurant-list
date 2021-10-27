@@ -41,7 +41,9 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
   const keyword = new RegExp(`${req.query.keyword.trim()}`, 'i')
 
-  return Restaurant.find({ name: keyword })
+  // Restaurant.find({ name: keyword }) <== find with filtered condition
+  // Restaurant.find({$or:[{ name: keyword }, { category: keyword }]) <== find with filtered OR-condition
+  return Restaurant.find({ $or: [{ name: keyword }, { category: keyword }]})
     .lean()
     .then(restaurants => res.render(
       'index', { restaurants, keyword: req.query.keyword.trim() }
