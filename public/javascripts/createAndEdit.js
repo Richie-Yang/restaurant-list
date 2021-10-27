@@ -1,6 +1,8 @@
 const previewLoadButton = document.querySelector('#preview-load-button')
 const previewImage = document.querySelector('#preview-image')
 const previewProgress = document.querySelector('#preview-progress')
+const createEditForm = document.querySelector('#create-edit-form')
+const saveButton = document.querySelector('#save-button')
 let progressValue = 0
 
 
@@ -31,4 +33,13 @@ previewLoadButton.addEventListener('click', function onPreviewLoadButtonClicked(
     }, 1000) 
   })
 
+})
+
+createEditForm.addEventListener('submit', function onCreateEditFormClicked(event) {
+  if (!createEditForm.checkValidity()) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+
+  createEditForm.classList.add('was-validated')
 })

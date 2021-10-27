@@ -82,21 +82,21 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Edit View Starts Here */
+/* Create Edit View Starts Here */
 
-.edit-view label.input-group-text {
+.create-edit-view label.input-group-text {
   width: 90px;
 }
 
-.edit-view #description {
+.create-edit-view #description {
   min-height: 100px;
 }
 
-.edit-view #preview-headline {
+.create-edit-view #preview-headline {
   max-width: 600px;
 }
 
-/* Edit View Ends Here */
+/* Create Edit View Ends Here */
 
 
 @media screen and (max-width: 992px) {

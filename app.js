@@ -1,6 +1,7 @@
 // Includes necessary packages
 const express = require('express')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/restaurant')
 
@@ -24,9 +25,10 @@ app.set('view engine', 'hbs')
 
 
 //////// Routing Section Starts Here ////////
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-// Get to index page (Read all items in CRUD)
+// GET to index page (Read all items in CRUD)
 app.get('/', (req, res) => {
   return Restaurant.find()
     .lean()
@@ -34,7 +36,7 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// Get to show page (Read a specific item in CRUD)
+// GET to show page (Read a specific item in CRUD)
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
 
@@ -56,13 +58,37 @@ app.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// Get to edit page (Read a specific item in CRUD)
+// GET to edit page (Read a specific item in CRUD)
 app.get('/restaurants/:restaurant_id/edit', (req, res) => {
   const id = req.params.restaurant_id
 
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+// POST in edit page (Update a specific item in CRUD)
+app.post('/restaurants/:restaurant_id/edit', (req, res) => {
+  const id = req.params.restaurant_id
+  const { 
+    name, rating, category, location, 
+    google_map, phone, description, image 
+  } = req.body
+
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.rating = Number(rating)
+      restaurant.category = category
+      restaurant.location = location
+      restaurant.google_map = google_map
+      restaurant.phone = phone
+      restaurant.description = description
+      restaurant.image = image
+      restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 //////// Routing Section Ends Here ////////

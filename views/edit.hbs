@@ -1,19 +1,43 @@
 <h1 class="mb-1 restaurant-show-title">餐廳編輯頁面</h1>
-<div class="container edit-view">
+<div class="container create-edit-view">
   <div class="row">
-    <form class="col-12 col-md-10 mx-auto" action="/restaurants/{{restaurant.id}}/edit" method="POST">
+    <form id="create-edit-form" class="col-12 col-md-10 mx-auto" action="/restaurants/{{restaurant._id}}/edit" method="POST" novalidate>
 
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="name">
-            <i class="fas fa-heading pr-1"></i>
-            名字：
-          </label>
+      {{!-- Form row for both name and rating --}}
+      <div class="form-row mb-2">
+        <div class="col input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="name">
+              <i class="fas fa-heading pr-1"></i>
+              名稱：
+            </label>
+          </div>
+          <input type="text" name="name" id="name" class="form-control" placeholder="請輸入餐廳名稱，ex: 'Sababa 沙巴巴中東美食'" aria-label="name"
+            aria-describedby="addon-wrapping" value="{{restaurant.name}}" required>
+          <div class="valid-feedback">
+            確認無誤
+          </div>
+          <div class="invalid-feedback">
+            請輸入餐廳名稱，不限中文或英文
+          </div>
         </div>
-        <input type="text" name="name" id="name" class="form-control" placeholder="name" aria-label="name"
-          aria-describedby="addon-wrapping" value="{{restaurant.name}}">
+
+        <div class="col input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="rating">
+              <i class="fas fa-star pr-1"></i>
+              評分：
+            </label>
+          </div>
+          <input type="text" name="rating" id="rating" class="form-control" placeholder="請輸入餐廳評分，級距從0.0 - 5.0，ex: '4.1'" aria-label="rating"
+            aria-describedby="addon-wrapping" value="{{restaurant.rating}}" inputmode="numeric">
+          <div class="valid-feedback">
+            確認無誤
+          </div>
+        </div>
       </div>
 
+      {{!-- Input group for category --}}
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <label class="input-group-text" for="category">
@@ -21,7 +45,7 @@
             類別：
           </label>
         </div>
-        <input list="categories" name="category" id="category" class="form-control" value="{{restaurant.category}}">
+        <input list="categories" name="category" id="category" class="form-control" placeholder="請輸入餐廳類別，或是選擇下拉選單的預設項目，ex: '中東料理'" value="{{restaurant.category}}" required>
         <datalist id="categories">
           <option>日本料理</option>
           <option>義式餐廳</option>
@@ -30,18 +54,49 @@
           <option>咖啡</option>
           <option>酒吧</option>
         </datalist>
-      </div>
-
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="location">
-            <i class="fas fa-map-marker-alt pr-2"></i>
-            地址：
-          </label>
+        <div class="valid-feedback">
+          確認無誤
         </div>
-        <input type="text" name="location" id="location" class="form-control" placeholder="location" aria-label="location" aria-describedby="addon-wrapping" value="{{restaurant.location}}">
+        <div class="invalid-feedback">
+          請輸入餐廳類別，不限中文或英文，或是選擇下拉選單的預設項目
+        </div>
       </div>
 
+      {{!-- Form row for both location and google_map --}}
+      <div class="form-row mb-2">
+        <div class="col input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="location">
+              <i class="fas fa-map-marker-alt pr-2"></i>
+              地址：
+            </label>
+          </div>
+          <input type="text" name="location" id="location" class="form-control" placeholder="請輸入餐廳地址，ex: '台北市羅斯福路三段 283 巷 17 號'" aria-label="location"
+            aria-describedby="addon-wrapping" value="{{restaurant.location}}" required>
+          <div class="valid-feedback">
+            確認無誤
+          </div>
+          <div class="invalid-feedback">
+            請輸入餐廳地址，不限中文或英文
+          </div>
+        </div>
+
+        <div class="col input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="google-map">
+              <i class="fas fa-link pr-1"></i>
+              連結：
+            </label>
+          </div>
+          <input type="url" name="google_map" id="google-map" class="form-control" placeholder="請輸入餐廳 Google Map URL，ex: 'https://goo.gl/maps/BJ'"
+            aria-label="google-map" aria-describedby="addon-wrapping" value="{{restaurant.google_map}}">
+          <div class="valid-feedback">
+            確認無誤
+          </div>
+        </div>
+      </div>
+
+      {{!-- Input group for phone --}}
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <label class="input-group-text" for="phone">
@@ -49,10 +104,17 @@
             電話：
           </label>
         </div>
-        <input type="text" name="phone" id="phone" class="form-control" placeholder="02 1234 5678" aria-label="phone" aria-describedby="addon-wrapping"
-          value="{{restaurant.phone}}">
+        <input type="text" name="phone" id="phone" class="form-control" placeholder="請輸入餐廳聯絡電話，ex: '02 2363 8009'" aria-label="phone" aria-describedby="addon-wrapping"
+          value="{{restaurant.phone}}" required>
+        <div class="valid-feedback">
+          確認無誤
+        </div>
+        <div class="invalid-feedback">
+          請輸入餐廳連絡電話
+        </div>
       </div>
 
+      {{!-- Input group for description --}}
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <label class="input-group-text pr-2" for="description">
@@ -60,11 +122,18 @@
             描述：
           </label>
         </div>
-        <textarea name="description" id="description" class="form-control" aria-label="With textarea">
+        <textarea name="description" id="description" class="form-control" placeholder="請輸入有關餐廳的描述" aria-label="With textarea" required>
           {{restaurant.description}}
         </textarea>
+        <div class="valid-feedback">
+          確認無誤
+        </div>
+        <div class="invalid-feedback">
+          請輸入有關餐廳的描述，不限中文或英文
+        </div>
       </div>
 
+      {{!-- Input group for image --}}
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="image">
@@ -72,14 +141,20 @@
             圖片：
           </label>
         </div>
-        <input type="text" name="image" id="image" class="form-control" placeholder="https://xxx.xx/xx/xx.jpg" aria-label="image"
-          aria-describedby="addon-wrapping" value="{{restaurant.image}}">
+        <input type="url" name="image" id="image" class="form-control" placeholder="請輸入餐廳圖片URL地址，ex: 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg'" aria-label="image"
+          aria-describedby="addon-wrapping" value="{{restaurant.image}}" required>
         <div class="input-group-append">
           <button class="btn btn-secondary" type="button" id="preview-load-button">載入預覽</button>
         </div>
+        <div class="valid-feedback">
+          確認無誤
+        </div>
+        <div class="invalid-feedback">
+          請輸入餐廳圖片URL地址
+        </div>
       </div>
 
-
+      {{!-- Preview --}}
       <h5 id="preview-headline" class="mx-auto text-secondary">圖片預覽 (Preview)</h5>
 
       <img id="preview-image" class="rounded mx-auto d-block mb-1 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
@@ -90,9 +165,11 @@
           aria-valuemax="100"></div>
       </div>
 
-      <button class="btn btn-outline-success py-1 mb-2 w-100 w-md-50 d-block mx-auto" type="submit">Save</button>
+      {{!-- Save button --}}
+      <button id="save-button" class="btn btn-outline-success py-1 mb-2 w-100 w-md-50 d-block mx-auto" type="submit">Save</button>
     </form>
 
+    {{!-- Both back and delete buttons --}}
     <div class="col-12 col-md-10 mx-auto d-flex flex-column flex-sm-row justify-content-center mb-5">
       <a class="btn btn-outline-info mr-1 mr-sm-2 mb-2 w-100 w-md-25" href="/">Back</a>
       <form class="d-inline mr-1 mr-sm-0 w-100 w-md-25" action="/restaurants/{{restaurant.id}}/delete" method="POST">
@@ -103,4 +180,4 @@
   </div>
 </div>
 
-<script src="/javascripts/edit.js"></script>
+<script src="/javascripts/createAndEdit.js"></script>
