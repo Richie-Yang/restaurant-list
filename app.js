@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/restaurant')
+const restaurant = require('./models/restaurant')
 
 // Initialize Express and designate the port
 const app = express()
@@ -107,6 +108,16 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
       restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+
+// POST in both index and edit page (Deletee a specific item in CRUD)
+app.post('/restaurants/:restaurant_id/delete', (req, res) => {
+  const id = req.params.restaurant_id
+
+  return Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 //////// Routing Section Ends Here ////////

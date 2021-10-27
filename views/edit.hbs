@@ -93,6 +93,9 @@
           <div class="valid-feedback">
             確認無誤 (可不填寫)
           </div>
+          <div class="invalid-feedback">
+            請輸入餐廳 Google Map URL地址
+          </div>
         </div>
       </div>
 
@@ -172,7 +175,7 @@
     {{!-- Both back and delete buttons --}}
     <div class="col-12 col-md-10 mx-auto d-flex flex-column flex-sm-row justify-content-center mb-5">
       <a class="btn btn-outline-info mr-1 mr-sm-2 mb-2 w-100 w-md-25" href="/">Back</a>
-      <form class="d-inline mr-1 mr-sm-0 w-100 w-md-25" action="/restaurants/{{restaurant.id}}/delete" method="POST">
+      <form class="d-inline mr-1 mr-sm-0 w-100 w-md-25" action="/restaurants/{{restaurant._id}}/delete" method="POST">
         <button class="btn btn-outline-danger w-100" type="submit">Delete</button>
       </form>
     </div>
