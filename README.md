@@ -5,9 +5,9 @@ Restaurant List, the web service which provides restaurant information for peopl
 ## Screenshots
 
 ### index.hbs view
-![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/restaurant-index.jpg?raw=true)
+![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/AC-Homework-A1/public/img/restaurant-index.jpg)
 ### show.hbs view
-![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/restaurant-show.jpg?raw=true)
+![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/AC-Homework-A1/public/img/restaurant-show.jpg)
 
 ## Features
 1. User can view all restaurant info.
