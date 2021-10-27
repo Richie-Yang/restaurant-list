@@ -6,11 +6,13 @@ const defaultSetup = {
   required: true
 }
 
+
 const restaurantSchema = new Schema({
     name: defaultSetup,
     rating: Number,
     category: defaultSetup,
     location: defaultSetup,
+    google_map: defaultSetup,
     phone: defaultSetup,
     description: defaultSetup,
     image: defaultSetup
