@@ -46,9 +46,7 @@
                   <div class="d-flex flex-row flex-sm-column flex-lg-row">
                     <a class="btn btn-outline-primary py-1 m-1" href="/restaurants/{{this._id}}/edit">Edit</a>
                     <a class="btn btn-outline-info p-1 m-1" href="/restaurants/{{this._id}}">Detail</a>
-                    <form class="d-inline" action="/restaurants/{{this._id}}/delete" method="POST">
-                      <button class="btn btn-outline-danger p-1 m-1" type="submit">Delete</button>
-                    </form>
+                    <button class="delete-button btn btn-outline-danger p-1 m-1" type="button" data-id="{{this._id}}">Delete</button>
                   </div>
                 </div>
 
@@ -68,3 +66,5 @@
     </div>
   {{/if}}
 </div>
+
+<script src="/javascripts/delete.js"></script>

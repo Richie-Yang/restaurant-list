@@ -111,13 +111,13 @@ app.post('/restaurants/:restaurant_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// POST in both index and edit page (Deletee a specific item in CRUD)
-app.post('/restaurants/:restaurant_id/delete', (req, res) => {
+// DELETE in both index and edit page (Deletee a specific item in CRUD)
+app.delete('/restaurants/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
 
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
-    .then(() => res.redirect('/'))
+    .then(() => res.sendStatus(200))
     .catch(error => console.log(error))
 })
 //////// Routing Section Ends Here ////////

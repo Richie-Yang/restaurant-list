@@ -1,3 +1,4 @@
+// newAndEdit.js is only applied to new.hbs and edit.hbs
 const previewLoadButton = document.querySelector('#preview-load-button')
 const previewImage = document.querySelector('#preview-image')
 const previewProgress = document.querySelector('#preview-progress')
@@ -7,7 +8,6 @@ let progressValue = 0
 
 
 previewLoadButton.addEventListener('click', function onPreviewLoadButtonClicked(event) {
-
   const newImageSource = document.querySelector('#image').value
   let timer
 

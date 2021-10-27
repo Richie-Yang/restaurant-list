@@ -175,12 +175,11 @@
     {{!-- Both back and delete buttons --}}
     <div class="col-12 col-md-10 mx-auto d-flex flex-column flex-sm-row justify-content-center mb-5">
       <a class="btn btn-outline-info mr-1 mr-sm-2 mb-2 w-100 w-md-25" href="/">Back</a>
-      <form class="d-inline mr-1 mr-sm-0 w-100 w-md-25" action="/restaurants/{{restaurant._id}}/delete" method="POST">
-        <button class="btn btn-outline-danger w-100" type="submit">Delete</button>
-      </form>
+      <button class="delete-button btn btn-outline-danger mr-1 mb-2 w-100 w-md-25" type="button" data-id="{{restaurant._id}}">Delete</button>
     </div>
 
   </div>
 </div>
 
 <script src="/javascripts/newAndEdit.js"></script>
+<script src="/javascripts/delete.js"></script>
