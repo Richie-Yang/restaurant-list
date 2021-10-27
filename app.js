@@ -31,6 +31,13 @@ app.get('/search', (req, res) => {
   const restaurants = restaurantList.results.filter(restaurantItem => restaurantItem.name.toLowerCase().includes(keyword))
   res.render('index', { restaurants, keyword: req.query.keyword.trim() })
 })
+
+app.get('/restaurants/:restaurant_id/edit', (req, res) => {
+  const id = req.params.restaurant_id
+  const restaurant = restaurantList.results.find(restaurantItem => restaurantItem.id.toString() === id)
+
+  res.render('edit', { restaurant })
+})
 //////// Routing Section Ends Here ////////
 
 
