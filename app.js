@@ -1,11 +1,20 @@
 // Includes necessary packages
 const express = require('express')
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
 const restaurantList = require('./restaurant.json')
 
 // Initialize Express and designate the port
 const app = express()
 const port = 3000
+
+
+// Initialize Mongoose ODM connection to MongoDB
+mongoose.connect('mongodb://localhost/restaurant-list')
+const db = mongoose.connection
+db.on('error', () => console.error('mongodb error!'))
+db.once('open', () => console.log('mongodb connected!'))
+
 
 // Set Handlebars as Express' view engine
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
