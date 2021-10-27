@@ -2,7 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const restaurantList = require('./restaurant.json')
+const Restaurant = require('./models/restaurant')
 
 // Initialize Express and designate the port
 const app = express()
@@ -26,28 +26,44 @@ app.set('view engine', 'hbs')
 //////// Routing Section Starts Here ////////
 app.use(express.static('public'))
 
+// Get to index page (Read all items in CRUD)
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  return Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
+// Get to show page (Read a specific item in CRUD)
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
-  const restaurant = restaurantList.results.find(restaurantItem => restaurantItem.id.toString() === id)
 
-  res.render('show', { restaurant })
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
+// Search operation (Read all items in CRUD with filtered keyword)
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.trim().toLowerCase()
-  const restaurants = restaurantList.results.filter(restaurantItem => restaurantItem.name.toLowerCase().includes(keyword))
-  res.render('index', { restaurants, keyword: req.query.keyword.trim() })
+  const keyword = new RegExp(`${req.query.keyword.trim()}`, 'i')
+
+  return Restaurant.find({ name: keyword })
+    .lean()
+    .then(restaurants => res.render(
+      'index', { restaurants, keyword: req.query.keyword.trim() }
+    ))
+    .catch(error => console.log(error))
 })
 
+// Get to edit page (Read a specific item in CRUD)
 app.get('/restaurants/:restaurant_id/edit', (req, res) => {
   const id = req.params.restaurant_id
-  const restaurant = restaurantList.results.find(restaurantItem => restaurantItem.id.toString() === id)
 
-  res.render('edit', { restaurant })
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
 })
 //////// Routing Section Ends Here ////////
 
