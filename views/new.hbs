@@ -1,7 +1,7 @@
-<h1 class="mb-1 restaurant-show-title">餐廳編輯頁面</h1>
+<h1 class="mb-1 restaurant-show-title">餐廳新增頁面</h1>
 <div class="container new-edit-view">
   <div class="row">
-    <form id="new-edit-form" class="col-12 col-md-10 mx-auto" action="/restaurants/{{restaurant._id}}/edit" method="POST" novalidate>
+    <form id="new-edit-form" class="col-12 col-md-10 mx-auto" action="/restaurant/new" method="POST" novalidate>
 
       {{!-- Form row for both name and rating --}}
       <div class="form-row mb-2">
@@ -12,8 +12,8 @@
               名稱：
             </label>
           </div>
-          <input type="text" name="name" id="name" class="form-control" placeholder="請輸入餐廳名稱，ex: 'Sababa 沙巴巴中東美食'" aria-label="name"
-            aria-describedby="addon-wrapping" value="{{restaurant.name}}" required>
+          <input type="text" name="name" id="name" class="form-control" placeholder="請輸入餐廳名稱，ex: 'Sababa 沙巴巴中東美食'"
+            aria-label="name" aria-describedby="addon-wrapping" required>
           <div class="valid-feedback">
             確認無誤
           </div>
@@ -29,8 +29,8 @@
               評分：
             </label>
           </div>
-          <input type="text" name="rating" id="rating" class="form-control" placeholder="請輸入餐廳評分(可不填寫)，級距從0.0 - 5.0，ex: '4.1'" aria-label="rating"
-            aria-describedby="addon-wrapping" value="{{restaurant.rating}}" inputmode="numeric">
+          <input type="text" name="rating" id="rating" class="form-control" placeholder="請輸入餐廳評分(可不填寫)，級距從0.0 - 5.0，ex: '4.1'"
+            aria-label="rating" aria-describedby="addon-wrapping" inputmode="numeric">
           <div class="valid-feedback">
             確認無誤 (可不填寫)
           </div>
@@ -45,7 +45,8 @@
             類別：
           </label>
         </div>
-        <input list="categories" name="category" id="category" class="form-control" placeholder="請輸入餐廳類別，或是選擇下拉選單的預設項目，ex: '中東料理'" value="{{restaurant.category}}" required>
+        <input list="categories" name="category" id="category" class="form-control"
+          placeholder="請輸入餐廳類別，或是選擇下拉選單的預設項目，ex: '中東料理'" required>
         <datalist id="categories">
           <option>日本料理</option>
           <option>義式餐廳</option>
@@ -71,8 +72,8 @@
               地址：
             </label>
           </div>
-          <input type="text" name="location" id="location" class="form-control" placeholder="請輸入餐廳地址，ex: '台北市羅斯福路三段 283 巷 17 號'" aria-label="location"
-            aria-describedby="addon-wrapping" value="{{restaurant.location}}" required>
+          <input type="text" name="location" id="location" class="form-control"
+            placeholder="請輸入餐廳地址，ex: '台北市羅斯福路三段 283 巷 17 號'" aria-label="location" aria-describedby="addon-wrapping" required>
           <div class="valid-feedback">
             確認無誤
           </div>
@@ -88,8 +89,9 @@
               連結：
             </label>
           </div>
-          <input type="url" name="google_map" id="google-map" class="form-control" placeholder="請輸入餐廳 Google Map URL (可不填寫)，ex: 'https://goo.gl/maps/BJ'"
-            aria-label="google-map" aria-describedby="addon-wrapping" value="{{restaurant.google_map}}">
+          <input type="url" name="google_map" id="google-map" class="form-control"
+            placeholder="請輸入餐廳 Google Map URL (可不填寫)，ex: 'https://goo.gl/maps/BJ'" aria-label="google-map"
+            aria-describedby="addon-wrapping">
           <div class="valid-feedback">
             確認無誤 (可不填寫)
           </div>
@@ -104,8 +106,8 @@
             電話：
           </label>
         </div>
-        <input type="text" name="phone" id="phone" class="form-control" placeholder="請輸入餐廳聯絡電話，ex: '02 2363 8009'" aria-label="phone" aria-describedby="addon-wrapping"
-          value="{{restaurant.phone}}" required>
+        <input type="text" name="phone" id="phone" class="form-control" placeholder="請輸入餐廳聯絡電話，ex: '02 2363 8009'"
+          aria-label="phone" aria-describedby="addon-wrapping" required>
         <div class="valid-feedback">
           確認無誤
         </div>
@@ -122,9 +124,8 @@
             描述：
           </label>
         </div>
-        <textarea name="description" id="description" class="form-control" placeholder="請輸入有關餐廳的描述" aria-label="With textarea" required>
-          {{restaurant.description}}
-        </textarea>
+        <textarea name="description" id="description" class="form-control" placeholder="請輸入有關餐廳的描述"
+          aria-label="With textarea" required></textarea>
         <div class="valid-feedback">
           確認無誤
         </div>
@@ -141,8 +142,9 @@
             圖片：
           </label>
         </div>
-        <input type="url" name="image" id="image" class="form-control" placeholder="請輸入餐廳圖片URL地址，ex: 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg'" aria-label="image"
-          aria-describedby="addon-wrapping" value="{{restaurant.image}}" required>
+        <input type="url" name="image" id="image" class="form-control"
+          placeholder="請輸入餐廳圖片URL地址，ex: 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg'"
+          aria-label="image" aria-describedby="addon-wrapping" required>
         <div class="input-group-append">
           <button class="btn btn-secondary" type="button" id="preview-load-button">載入預覽</button>
         </div>
@@ -157,25 +159,19 @@
       {{!-- Preview --}}
       <h5 id="preview-headline" class="mx-auto text-secondary">圖片預覽 (Preview)</h5>
 
-      <img id="preview-image" class="rounded mx-auto d-block mb-1 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}"
-        style="max-width: 600px;">
+      <img id="preview-image" class="rounded mx-auto d-block mb-1 w-100" style="max-width: 600px;">
 
       <div id="preview-progress" class="progress mb-4 mx-auto">
-        <div id="preview-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0"
-          aria-valuemax="100"></div>
+        <div id="preview-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+          role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
 
-      {{!-- Save button --}}
-      <button id="save-button" class="btn btn-outline-success py-1 mb-2 w-100 w-md-50 d-block mx-auto" type="submit">Save</button>
+      {{!-- Both save and back buttons --}}
+      <div class="d-flex flex-column flex-sm-row justify-content-center mb-5">
+        <button id="save-button" class="btn btn-outline-success py-1 mb-2 mr-2 w-100" type="submit">Save</button>
+        <a class="btn btn-outline-info mb-2 mr-2 w-100 " href="/">Back</a>
+      </div>
     </form>
-
-    {{!-- Both back and delete buttons --}}
-    <div class="col-12 col-md-10 mx-auto d-flex flex-column flex-sm-row justify-content-center mb-5">
-      <a class="btn btn-outline-info mr-1 mr-sm-2 mb-2 w-100 w-md-25" href="/">Back</a>
-      <form class="d-inline mr-1 mr-sm-0 w-100 w-md-25" action="/restaurants/{{restaurant.id}}/delete" method="POST">
-        <button class="btn btn-outline-danger w-100" type="submit">Delete</button>
-      </form>
-    </div>
 
   </div>
 </div>

@@ -36,16 +36,6 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// GET to show page (Read a specific item in CRUD)
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const id = req.params.restaurant_id
-
-  return Restaurant.findById(id)
-    .lean()
-    .then(restaurant => res.render('show', { restaurant }))
-    .catch(error => console.log(error))
-})
-
 // Search operation (Read all items in CRUD with filtered keyword)
 app.get('/search', (req, res) => {
   const keyword = new RegExp(`${req.query.keyword.trim()}`, 'i')
@@ -55,6 +45,34 @@ app.get('/search', (req, res) => {
     .then(restaurants => res.render(
       'index', { restaurants, keyword: req.query.keyword.trim() }
     ))
+    .catch(error => console.log(error))
+})
+
+// GET to new page (No action in CRUD)
+app.get('/restaurant/new', (req, res) => res.render('new'))
+
+// POST in new page (Create a specific item in CRUD)
+app.post('/restaurant/new', (req, res) => {
+  const {
+    name, rating, category, location,
+    google_map, phone, description, image
+  } = req.body
+
+  return Restaurant.create({
+    name, category, image, location,
+    phone, google_map, rating, description
+  })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// GET to show page (Read a specific item in CRUD)
+app.get('/restaurants/:restaurant_id', (req, res) => {
+  const id = req.params.restaurant_id
+
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.log(error))
 })
 

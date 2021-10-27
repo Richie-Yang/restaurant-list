@@ -12,7 +12,7 @@ const restaurantSchema = new Schema({
     rating: Number,
     category: defaultSetup,
     location: defaultSetup,
-    google_map: defaultSetup,
+    google_map: String,
     phone: defaultSetup,
     description: defaultSetup,
     image: defaultSetup
