@@ -39,14 +39,15 @@ app.get('/', (req, res) => {
 
 // Search operation (Read all items in CRUD with filtered keyword)
 app.get('/search', (req, res) => {
-  const keyword = new RegExp(`${req.query.keyword.trim()}`, 'i')
+  const keyword = req.query.keyword.trim()
+  const regexKeyword = new RegExp(`${keyword}`, 'i')
 
   // Restaurant.find({ name: keyword }) <== find with filtered condition
   // Restaurant.find({$or:[{ name: keyword }, { category: keyword }]) <== find with filtered OR-condition
-  return Restaurant.find({ $or: [{ name: keyword }, { category: keyword }]})
+  return Restaurant.find({ $or: [{ name: regexKeyword }, { category: regexKeyword }]})
     .lean()
     .then(restaurants => res.render(
-      'index', { restaurants, keyword: req.query.keyword.trim() }
+      'index', { restaurants, keyword }
     ))
     .catch(error => console.log(error))
 })
