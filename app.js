@@ -53,10 +53,10 @@ app.get('/search', (req, res) => {
 })
 
 // GET to new page (No action in CRUD)
-app.get('/restaurant/new', (req, res) => res.render('new'))
+app.get('/restaurants/new', (req, res) => res.render('new'))
 
 // POST in new page (Create a specific item in CRUD)
-app.post('/restaurant/new', (req, res) => {
+app.post('/restaurants/new', (req, res) => {
   const {
     name, rating, category, location,
     google_map, phone, description, image
