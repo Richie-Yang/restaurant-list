@@ -3,8 +3,9 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const Restaurant = require('./models/restaurant')
-const restaurant = require('./models/restaurant')
+
 
 // Initialize Express and designate the port
 const app = express()
@@ -26,8 +27,10 @@ app.set('view engine', 'hbs')
 
 
 //////// Routing Section Starts Here ////////
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
 
 // GET to index page (Read all items in CRUD)
 app.get('/', (req, res) => {
@@ -90,8 +93,8 @@ app.get('/restaurants/:restaurant_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// POST in edit page (Update a specific item in CRUD)
-app.post('/restaurants/:restaurant_id/edit', (req, res) => {
+// PUT in edit page (Update a specific item in CRUD)
+app.put('/restaurants/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   const { 
     name, rating, category, location, 
