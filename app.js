@@ -126,7 +126,7 @@ app.delete('/restaurants/:restaurant_id', (req, res) => {
 //////// Routing Section Ends Here ////////
 
 
-// Start Express server
+// Start Express server, and do console log
 app.listen(port, () => {
   console.log(`Express is listening on 127.0.0.1:${port}`)
 })
