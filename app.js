@@ -2,22 +2,14 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const routes = require('./routes')
+
 
 // Initialize Express and designate the port
 const app = express()
 const port = 3000
-
-
-// Initialize Mongoose ODM connection to MongoDB
-mongoose.connect('mongodb://localhost/restaurant-list')
-const db = mongoose.connection
-
-// Report the result status once connection is attempted
-db.on('error', () => console.error('mongodb error!'))
-db.once('open', () => console.log('mongodb connected!'))
+require('./config/mongoose')
 
 
 // Set Handlebars as Express' view engine

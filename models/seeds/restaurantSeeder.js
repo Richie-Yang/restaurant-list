@@ -1,17 +1,10 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const Restaurant = require('../restaurant.js')
 const dummyData = require('../../restaurant.json')
 
 
-// Initialize Mongoose ODM connection to MongoDB
-mongoose.connect('mongodb://localhost/restaurant-list')
-const db = mongoose.connection
-
 // Report the result status once connection is attempted
-db.on('error', () => console.log('mongodb error!'))
 db.once('open', () => {
-  console.log('mongodb connected!')
-
   // Import dummy data if connection is successful
   dummyData.results.forEach(data => {
     const { 
