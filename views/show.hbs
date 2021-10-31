@@ -48,6 +48,14 @@
         src="{{restaurant.image}}" alt="{{restaurant.name}}"
         style="max-width: 600px;">
 
+      <p class="mb-3">
+        <span class="text-secondary">
+          <i class="far fa-calendar-alt pr-2"></i>
+          上次更新時間：
+        </span>
+        {{restaurant.updated_at}}
+      </p>
+
       {{!-- Both edit and back buttons --}}
       <div class="d-flex flex-column flex-sm-row justify-content-center mb-5">
         <a class="btn btn-outline-primary py-1 mb-2 mr-2 w-100" href="/restaurants/{{restaurant._id}}/edit">Edit</a>
