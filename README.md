@@ -65,7 +65,7 @@ PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmj
 
 ## Other Screenshots (updated at 10/31/2021)
 ### new.hbs view
-![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-new.jpg)
+![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-new.jpg)
 ### edit.hbs view
 ![Edit Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-edit.jpg)
 ### index.hbs no result view
