@@ -14,7 +14,8 @@ router.post('/new', (req, res) => {
     phone, description, image
   } = req.body
 
-  const google_map = `${GOOGLE_MAP_URL}&query=${name}+${location}`
+  const google_map = req.body.google_map ||
+    `${GOOGLE_MAP_URL}&query=${name}+${location}`
 
   return Restaurant.create({
     name, category, image, location,
