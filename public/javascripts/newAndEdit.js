@@ -35,10 +35,11 @@ function formCheck(form, event) {
 previewLoadButton.addEventListener('click', function onPreviewLoadButtonClicked(event) {
   // interval timer pre-declaration
   let timer
+  const defaultImageSrc = 'https://via.placeholder.com/600x400?text=Recomended+size:+600+x+400'
 
   if (progressValue >= 100) renderPreviewProgress(previewProgress)
   const previewProgressBar = document.querySelector('#preview-progress-bar')
-  const newImageSource = document.querySelector('#image').value
+  const newImageSource = document.querySelector('#image').value || defaultImageSrc
 
   new Promise(resolve => {
     // constantly checking if progress value hits over 100%
