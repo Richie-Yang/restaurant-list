@@ -19,17 +19,15 @@ router.get('/search', (req, res) => {
   const regexKeyword = new RegExp(`${keyword}`, 'i')
   const sortCondition = {}
   const sortOptions = [
-    { name: 'A -> Z', value: 'asc', isSelected: false },
-    { name: 'Z -> A', value: 'desc', isSelected: false },
-    { name: '類別', value: 'category', isSelected: false },
-    { name: '地區', value: 'location', isSelected: false },
+    { name: 'A -> Z', value: 'asc'},
+    { name: 'Z -> A', value: 'desc'},
+    { name: '類別', value: 'category'},
+    { name: '地區', value: 'location'},
   ]
 
   // process for sort option display
   sortOptions.forEach((item, index) => {
-    if (sort === item.value) {
-      sortOptions[index].isSelected = true
-    }
+    sortOptions[index]['isSelected'] = sort === item.value ? true : false
   })
 
   // process for MongoDB sort input
