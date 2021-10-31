@@ -7,7 +7,7 @@ Restaurant List, the web service which provides restaurant information for peopl
 ### index.hbs view
 ![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-index.jpg)
 ### show.hbs view
-![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-show.jpg)
+![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-show.jpg)
 
 
 ## Features (updated at 10/31/2021)
@@ -67,7 +67,7 @@ PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmj
 ### new.hbs view
 ![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-new.jpg)
 ### edit.hbs view
-![Edit Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-edit.jpg)
+![Edit Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-edit.jpg)
 ### index.hbs no result view
 ![NoResult Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-noResult.jpg)
 
