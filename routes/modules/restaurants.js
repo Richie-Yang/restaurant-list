@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant')
+const GOOGLE_MAP_URL = 'https://www.google.com/maps/search/?api=1'
 
 
 // GET to new page (No action in CRUD)
@@ -10,8 +11,10 @@ router.get('/new', (req, res) => res.render('new'))
 router.post('/new', (req, res) => {
   const {
     name, rating, category, location,
-    google_map, phone, description, image
+    phone, description, image
   } = req.body
+
+  const google_map = `${GOOGLE_MAP_URL}&query=${name}+${location}`
 
   return Restaurant.create({
     name, category, image, location,
@@ -46,8 +49,11 @@ router.put('/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
   const {
     name, rating, category, location,
-    google_map, phone, description, image
+    phone, description, image
   } = req.body
+
+  const google_map = req.body.google_map || 
+    `${GOOGLE_MAP_URL}&query=${name}+${location}`
 
   return Restaurant.findById(id)
     .then(restaurant => {
