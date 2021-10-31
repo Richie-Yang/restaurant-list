@@ -12,7 +12,3 @@ Desktop.ini
 node_modules
 *.log
 *.gz
-
-# screenshots
-public/img/a1*.jpg
-public/img/a5*.jpg
