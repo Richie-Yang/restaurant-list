@@ -1,27 +1,48 @@
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<div class="container">
+
+  <!-- function bar -->
+  <div class="function-bar row mb-3">
+    <div class="function-bar-outer col-md-10 col-11 mx-auto">
+      <div class="function-bar-inner">
+        <form class="row row-cols-1 row-cols-md-2" action="/search">
+
+          <!-- search bar -->
+          <div class="search-bar-form col mb-2">
+            <h5 class="mb-2">尋找餐廳：</h5>
+            <div class="input-group">
+              <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+                value="{{keyword}}" aria-describedby="search-button">
+              <div class="input-group-append">
+                <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <a class="btn btn-info w-100 mt-3" href="/restaurants/new">新增餐廳</a>
-      </form>
+
+          {{!-- sort bar --}}
+          <div class="sort-bar-form col mb-2 form-group">
+            <label class="h5 mb-2" for="sort-bar">排序方式：</label>
+            <select class="form-control" id="sort-bar" name="sort">
+              {{#if sortOptions}}
+                {{#each sortOptions}}
+                <option value="{{this.value}}" {{#if this.isSelected}} selected {{/if}}>{{this.name}}</option>
+                {{/each}}
+              {{else}}
+                  <option value="asc" selected>A -> Z</option>
+                  <option value="desc">Z -> A</option>
+                  <option value="category">類別</option>
+                  <option value="location">地區</option>
+              {{/if}}
+            </select>
+          </div>
+
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- restaurant list -->
-<div class="container mt-5">
+  <!-- restaurant list -->
   {{#if restaurants}}
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
 

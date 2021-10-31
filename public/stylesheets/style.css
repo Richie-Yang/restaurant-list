@@ -24,24 +24,31 @@ header {
   filter: blur(3px);
 }
 
-.search-bar .search-bar-outer {
+.function-bar .function-bar-outer {
   margin: 0 auto;
-  max-width: 680px;
   background-color: #fce2cf;
   border-radius: 8px;
-  padding: 20px 30px;
+  padding: 10px 40px;
   border: 0;
   margin-top: -60px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar .search-bar-inner h4 {
+.search-bar-form h5, .sort-bar-form label {
   color: #9b4b4b;
 }
 
 .form-control::placeholder {
   color: #aaaaaa;
   font-size: 0.8rem;
+}
+
+.search-bar-form {
+  padding: 0 15% 0 0;
+}
+
+.sort-bar-form {
+  padding: 0 0 0 15%;
 }
 
 .btn-major {
@@ -100,6 +107,14 @@ header {
 
 
 @media screen and (max-width: 992px) {
+
+  .search-bar-form {
+    padding-right: 7.5%;
+  }
+
+  .sort-bar-form {
+    padding-left: 7.5%;
+  }
   
   .card img{
     height: 115px;
@@ -108,6 +123,14 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+
+  .search-bar-form {
+    padding: initial;
+  }
+
+  .sort-bar-form {
+    padding: initial;
+  }
   
   .restaurant-show-title {
     font-size: 2rem;
