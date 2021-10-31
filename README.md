@@ -3,20 +3,21 @@
 Restaurant List, the web service which provides restaurant information for people to search for. The project itself is built upon Node.js + Express.js. Within Express.js backend framework, there are handleBars, body-parser, mongoose together making business logic working without issue. About frontend part, we used Bootstrap, SweetAlert, and Axios to guarantee a satisfying user experience.  
 
 
-## Screenshots (updated at 10/27/2021)
+## Screenshots (updated at 10/31/2021)
 ### index.hbs view
-![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-index.jpg)
+![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-index.jpg)
 ### show.hbs view
 ![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-show.jpg)
 
 
-## Features (updated at 10/27/2021)
-1. User can read all restaurant info in index page.
-2. User can create new restaurant info in new page.
-3. User can update/delete specific restaurant info in edit page.
-4. user can upload preview image before save all info.
-5. User can click one restaurant link to check the detail.
-6. User can search specific restaurants based on keyword.
+## Features (updated at 10/31/2021)
+1. User can view all restaurants in index page.
+2. User can search specific restaurants based on keyword.
+3. User can sort all restaurants based on sort-option.
+4. User can create new restaurant info in new page.
+5. User can update/delete specific restaurant in edit page.
+6. user can upload preview image before save all info.
+7. User can click one restaurant link to check the detail.
 
 
 ## Prerequisites (updated at 10/27/2021)
@@ -57,17 +58,18 @@ npm run dev
 PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmjs.com/package/nodemon) first.
 
 
-## All Branches
-2021/10/26 AC-Homework-A1 (branch)
+## All Branches (updated at 10/31/2021)
+* 2021/10/26 AC-Homework-A1
+* 2021/10/31 AC-Homework-A5
 
 
-## Other Screenshots (updated at 10/27/2021)
+## Other Screenshots (updated at 10/31/2021)
 ### new.hbs view
 ![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-new.jpg)
 ### edit.hbs view
 ![Edit Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-edit.jpg)
 ### index.hbs no result view
-![NoResult Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a5-restaurant-noResult.jpg)
+![NoResult Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-noResult.jpg)
 
 
 ## Contributor
