@@ -8,7 +8,7 @@ const routes = require('./routes')
 
 // Initialize Express and designate the port
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 require('./config/mongoose')
 
 
@@ -26,6 +26,6 @@ app.use(routes)
 
 
 // Start Express server, and do console log
-app.listen(port, () => {
-  console.log(`Express is listening on 127.0.0.1:${port}`)
+app.listen(PORT, () => {
+  console.log(`Express is listening on 127.0.0.1:${PORT}`)
 })
