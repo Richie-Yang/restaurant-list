@@ -14,10 +14,21 @@ router.get('/', (req, res) => {
 
 // Search operation (Read all items in CRUD with filtered keyword)
 router.get('/search', (req, res) => {
-  const keyword = req.query.keyword.trim()
+  // extract data from request message body
   const sort = req.query.sort
-  const regexKeyword = new RegExp(`${keyword}`, 'i')
+  const userInputKeyword = req.query.keyword.trim()
+
+  // filter out all symbols from user-input (for webSec purpose)
+  const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/\\'
+  const processedKeyword = [...userInputKeyword].filter(
+    arrayItem => !symbols.includes(arrayItem)
+  ).join('')
+
+  // create regular expression object for DB query use
+  const regexKeyword = new RegExp(`${processedKeyword}`, 'i')
+  // create sortCondition object for DB sort use
   const sortCondition = {}
+  // create sortOptions array for template rendering use
   const sortOptions = [
     { name: 'A -> Z', value: 'asc'},
     { name: 'Z -> A', value: 'desc'},
@@ -27,7 +38,7 @@ router.get('/search', (req, res) => {
 
   // process for sort option display
   sortOptions.forEach((item, index) => {
-    sortOptions[index]['isSelected'] = sort === item.value ? true : false
+    sortOptions[index]['isSelected'] = sort === item.value
   })
 
   // process for MongoDB sort input
@@ -37,6 +48,9 @@ router.get('/search', (req, res) => {
       break
     case sort === 'category' || sort === 'location':
       sortCondition[sort] = 'asc'
+      break
+    default:
+      sortCondition['_id'] = 'asc'
   }
 
   // Restaurant.find({ name: keyword }) <== find with filtered condition
@@ -45,7 +59,7 @@ router.get('/search', (req, res) => {
     .lean()
     .sort(sortCondition)
     .then(restaurants => res.render(
-      'index', { restaurants, keyword, sortOptions }
+      'index', { restaurants, keyword: userInputKeyword, sortOptions }
     ))
     .catch(error => console.log(error))
 })
