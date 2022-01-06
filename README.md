@@ -52,7 +52,7 @@ cp .env.example .env
 5. Fill out valid string referring to .env.example
 
 
-## Execution (updated at 10/27/2021)
+## Execution (updated at 01/06/2022)
 1. Run below script to add seed data. 
 (Every time you run it, the previous seed data will be overwritten)
 ```
@@ -69,6 +69,24 @@ or
 npm run dev
 ```
 PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmjs.com/package/nodemon) first.
+
+
+## Usage (updated at 01/06/2022)
+1. Open your browser and go to http://127.0.0.1:3000.
+2. Click register button to create new account.
+3. If you did run 'npm run seed' previously, seed user credentials below are available for use:
+
+First seed user
+```
+email: user1@example.com
+password: 12345678
+```
+
+Second seed user
+```
+email: user2@example.com
+password: 12345678
+```
 
 
 ## All Branches (updated at 01/06/2022)
