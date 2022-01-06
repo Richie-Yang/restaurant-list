@@ -3,6 +3,7 @@ body {
 }
 
 header {
+  position: relative;
   overflow: hidden;
 }
 
@@ -101,6 +102,11 @@ header {
 
 .new-edit-view #preview-headline {
   max-width: 600px;
+}
+
+#register-form {
+  position: relative;
+  top: -150px;
 }
 
 /* New And Edit Views End Here */
