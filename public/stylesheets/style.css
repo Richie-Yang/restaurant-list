@@ -104,7 +104,7 @@ header {
   max-width: 600px;
 }
 
-#register-form {
+#register-form, #login-form {
   position: relative;
   top: -150px;
 }
