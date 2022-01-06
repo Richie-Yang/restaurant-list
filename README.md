@@ -1,13 +1,14 @@
 # Restaurant list
 
 Restaurant List, the web service which provides restaurant information for people to search for. The project itself is built upon Node.js + Express.js. Within Express.js backend framework, there are handleBars, body-parser, mongoose together making business logic working without issue. About frontend part, we used Bootstrap, SweetAlert, and Axios to guarantee a satisfying user experience.
+
 Recenetly we implemenmted authentication/authorization feature into this project with well-known module called 'Passport'. And not just local login, we also support Facebook login (for demo use and for self-account only). Furthermore, because we take your personal data seriously, so the password you provide during registeration process is hashed with bcrypt.js. (updated at 01/06/2022)
 
 
-## Screenshots (updated at 10/31/2021)
-### index.hbs view
-![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-index.jpg)
-### show.hbs view
+## Screenshots (updated at 01/06/2022)
+### index view
+![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/final-restaurant-index.jpg)
+### show view
 ![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-show.jpg)
 
 
@@ -27,7 +28,7 @@ Recenetly we implemenmted authentication/authorization feature into this project
 3. GitBash or CMder (for Windows) / terminal (for MacOS)
 
 
-## Installation
+## Installation (updated at 01/06/2022)
 1. Open your terminal, then clone the repo to your local.
 ```
 git clone https://github.com/Richie-Yang/restaurant-list.git
@@ -40,10 +41,20 @@ cd restaurant-list
 ```
 npm install
 ```
+4. Create .env file at project root directory
+```
+touch .env
+```
+or
+```
+cp .env.example .env
+```
+5. Fill out valid string referring to .env.example
 
 
 ## Execution (updated at 10/27/2021)
-1. Run below script to add seed data.
+1. Run below script to add seed data. 
+(Every time you run it, the previous seed data will be overwritten)
 ```
 npm run seed
 ```
@@ -66,14 +77,32 @@ PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmj
 * 2022/01/06 AC-Homework-A6
 
 
-## Other Screenshots (updated at 10/31/2021)
-### new.hbs view
+## Other Screenshots (updated at 01/06/2022)
+### new view
 ![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-new.jpg)
-### edit.hbs view
+### edit view
 ![Edit Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-edit.jpg)
-### index.hbs no result view
+### no result on index view
 ![NoResult Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-noResult.jpg)
+### error view
+![Error Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/final-restaurant-errorHandled.jpg)
+
+
+## Dependencies
++ bcryptjs: ^2.4.3
++ connect-flash: ^0.1.1
++ dotenv: ^10.0.0
++ express: ^4.17.1
++ express-handlebars: ^5.3.4
++ express-session: ^1.17.2
++ method-override: ^3.0.0
++ mongoose: ^6.0.12
++ passport: ^0.5.2
++ passport-facebook: ^3.0.0
++ passport-local: ^1.0.0
 
 
 ## Contributor
-[Richie](https://github.com/Richie-Yang)
+::: warning
+[Richie](https://github.com/Richie-Yang) :wink:
+:::
