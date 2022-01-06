@@ -13,13 +13,14 @@ router.post('/new', (req, res) => {
     name, rating, category, location,
     phone, description, image
   } = req.body
+  const userId = req.user._id
 
   const google_map = req.body.google_map ||
     `${GOOGLE_MAP_URL}&query=${name}+${location}`
 
   return Restaurant.create({
-    name, category, image, location,
-    phone, google_map, rating, description
+    name, category, image, location, phone, 
+    google_map, rating, description, userId
   })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
@@ -28,8 +29,9 @@ router.post('/new', (req, res) => {
 // GET to show page (Read a specific item in CRUD)
 router.get('/:restaurant_id', (req, res) => {
   const id = req.params.restaurant_id
+  const userId = req.user._id
 
-  return Restaurant.findById(id)
+  return Restaurant.findOne({ id, userId })
     .lean()
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.log(error))

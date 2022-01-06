@@ -5,7 +5,9 @@ const Restaurant = require('../../models/restaurant')
 
 // GET to index page (Read all items in CRUD)
 router.get('/', (req, res) => {
-  return Restaurant.find()
+  const userId = req.user._id
+
+  return Restaurant.find({ userId })
     .lean()
     .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))

@@ -15,7 +15,13 @@ const restaurantSchema = new Schema({
     google_map: String,
     phone: defaultSetup,
     description: defaultSetup,
-    image: defaultSetup
+    image: defaultSetup,
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      index: true,
+      required: true
+    }
   },
   { timestamps: { 
     createdAt: 'created_at',
