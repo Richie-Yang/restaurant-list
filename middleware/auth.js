@@ -1,7 +1,7 @@
 module.exports = {
   authenticator: (req, res, next) => {
     if (!req.isAuthenticated()) {
-      console.log('This visitor has no permission yet')
+      req.flash('warning_msg', 'Please login before access the content')
       return res.redirect('/users/login')
     }
     next()

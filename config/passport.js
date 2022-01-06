@@ -11,19 +11,19 @@ module.exports = app => {
 
   // local login strategy setup
   passport.use(new LocalStrategy(
-    { usernameField: 'email' },
-    (email, password, done) => {
+    { usernameField: 'email', passReqToCallback: true },
+    (req, email, password, done) => {
       return User.findOne({ email })
         .then(user => {
           if (!user) {
-            console.log('Email does not exist')
+            req.flash('warning_msg', 'That email is not registered')
             return done(null, false)
           }
 
           return bcrypt.compare(password, user.password)
             .then(isMatch => {
               if (!isMatch) {
-                console.log('Email or password is not correct')
+                req.flash('warning_msg', 'Email or password incorrect')
                 return done(null, false)
               }
 

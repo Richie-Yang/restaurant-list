@@ -25,26 +25,25 @@ router.post('/register', (req, res) => {
 
   // check all required fields
   if (!email || !password || !confirmPassword) {
-    errors.push('All fields are required')
+    errors.push({ message: 'All fields are required' })
   }
 
   // check if passwords are all matched
   if (password !== confirmPassword) {
-    errors.push('Two password input must be equal')
+    errors.push({ message: 'Both password inputs are not matched' })
   }
 
   // if any error occurs, then render error
   if (errors.length) {
-    console.log(errors)
-    return res.render('register', { name, email })
+    return res.render('register', { errors, name, email })
   }
 
   // check if user exists or not
   return User.findOne({ email })
     .then(user => {
       if (user) {
-        console.log('Email has been used')
-        return res.render('register', { name, email })
+        errors.push({ message: 'Email has been used' })
+        return res.render('register', { errors, name, email })
       }
 
       // generate name based on email if no name provided
@@ -69,6 +68,7 @@ router.post('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
   console.log('User has successfully logout')
+  req.flash('success_msg', 'You have successfully logout')
   req.logout()
   res.redirect('/users/login')
 })
