@@ -1,17 +1,21 @@
 // Includes necessary packages
 const express = require('express')
 const exphbs = require('express-handlebars')
-const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const usePassport = require('./config/passport')
 const routes = require('./routes')
 
 
 // Initialize Express and designate the port
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 require('./config/mongoose')
 
 
@@ -22,13 +26,13 @@ app.set('view engine', 'hbs')
 
 //////// Routing Section Starts Here ////////
 app.use(session({
-  secret: 'test123',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
 usePassport(app)
 app.use(methodOverride('_method'))
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(flash())
 app.use((req, res, next) => {
