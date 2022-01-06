@@ -20,6 +20,9 @@ router.get('/search', (req, res) => {
   const sort = req.query.sort
   const userInputKeyword = req.query.keyword.trim()
 
+  // extract user ID from HTTP request
+  const userId = req.user._id
+
   // filter out all symbols from user-input (for webSec purpose)
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/\\'
   const processedKeyword = [...userInputKeyword].filter(
@@ -57,7 +60,10 @@ router.get('/search', (req, res) => {
 
   // Restaurant.find({ name: keyword }) <== find with filtered condition
   // Restaurant.find({$or:[{ name: keyword }, { category: keyword }]) <== find with filtered OR-condition
-  return Restaurant.find({ $or: [{ name: regexKeyword }, { category: regexKeyword }] })
+  return Restaurant.find({ 
+      $or: [{ name: regexKeyword }, { category: regexKeyword }],
+      $and: [{ userId }]
+    })
     .lean()
     .sort(sortCondition)
     .then(restaurants => res.render(
