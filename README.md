@@ -1,6 +1,7 @@
 # Restaurant list
 
-Restaurant List, the web service which provides restaurant information for people to search for. The project itself is built upon Node.js + Express.js. Within Express.js backend framework, there are handleBars, body-parser, mongoose together making business logic working without issue. About frontend part, we used Bootstrap, SweetAlert, and Axios to guarantee a satisfying user experience.  
+Restaurant List, the web service which provides restaurant information for people to search for. The project itself is built upon Node.js + Express.js. Within Express.js backend framework, there are handleBars, body-parser, mongoose together making business logic working without issue. About frontend part, we used Bootstrap, SweetAlert, and Axios to guarantee a satisfying user experience.
+Recenetly we implemenmted authentication/authorization feature into this project with well-known module called 'Passport'. And not just local login, we also support Facebook login (for demo use and for self-account only). Furthermore, because we take your personal data seriously, so the password you provide during registeration process is hashed with bcrypt.js. (updated at 01/06/2022)
 
 
 ## Screenshots (updated at 10/31/2021)
@@ -10,14 +11,15 @@ Restaurant List, the web service which provides restaurant information for peopl
 ![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-show.jpg)
 
 
-## Features (updated at 10/31/2021)
-1. User can view all restaurants in index page.
-2. User can search specific restaurants based on keyword.
-3. User can sort all restaurants based on sort-option.
-4. User can create new restaurant info in new page.
-5. User can update/delete specific restaurant in edit page.
+## Features (updated at 01/06/2022)
+1. User can register the new account through local or facebook.
+2. User can login into Restaurant list to manage their content.
+3. User can sort/filter all restaurants based on custom options.
+4. User can create new restaurant info.
+5. User can update/delete specific restaurant.
 6. user can upload preview image before save all info.
 7. User can click one restaurant link to check the detail.
+8. User can view all restaurants in homepage.
 
 
 ## Prerequisites (updated at 10/27/2021)
@@ -58,9 +60,10 @@ npm run dev
 PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmjs.com/package/nodemon) first.
 
 
-## All Branches (updated at 10/31/2021)
+## All Branches (updated at 01/06/2022)
 * 2021/10/26 AC-Homework-A1
 * 2021/10/31 AC-Homework-A5
+* 2022/01/06 AC-Homework-A6
 
 
 ## Other Screenshots (updated at 10/31/2021)
