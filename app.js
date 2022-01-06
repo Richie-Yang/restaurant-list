@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const usePassport = require('./config/passport')
 const routes = require('./routes')
+const { serverError } = require('./middleware/errorHandler')
 
 
 // Initialize Express and designate the port
@@ -43,6 +44,11 @@ app.use((req, res, next) => {
   next()
 })
 app.use(routes)
+// handling all 500 errors scenario
+app.use((err, req, res, next) => {
+  console.log(err.stack)
+  return serverError(res)
+})
 //////// Routing Section Ends Here ////////
 
 

@@ -4,18 +4,18 @@ const Restaurant = require('../../models/restaurant')
 
 
 // GET to index page (Read all items in CRUD)
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   const userId = req.user._id
 
   return Restaurant.find({ userId })
     .lean()
     .sort({ _id: 'asc' })
     .then(restaurants => res.render('index', { restaurants }))
-    .catch(error => console.log(error))
+    .catch(err => next(err))
 })
 
 // Search operation (Read all items in CRUD with filtered keyword)
-router.get('/search', (req, res) => {
+router.get('/search', (req, res, next) => {
   // extract data from request message body
   const sort = req.query.sort
   const userInputKeyword = req.query.keyword.trim()
@@ -67,9 +67,9 @@ router.get('/search', (req, res) => {
     .lean()
     .sort(sortCondition)
     .then(restaurants => res.render(
-      'index', { restaurants, keyword: userInputKeyword, sortOptions }
+        'index', { restaurants, keyword: userInputKeyword, sortOptions }
     ))
-    .catch(error => console.log(error))
+    .catch(err => next(err))
 })
 
 

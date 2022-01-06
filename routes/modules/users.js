@@ -18,7 +18,7 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
   const { email, password, confirmPassword } = req.body
   let { name } = req.body
   const errors = []
@@ -62,8 +62,9 @@ router.post('/register', (req, res) => {
           })
         })
         .then(() => res.redirect('/users/login'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
     })
+    .catch(err => next(err))
 })
 
 router.get('/logout', (req, res) => {
