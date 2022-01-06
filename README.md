@@ -92,7 +92,7 @@ password: 12345678
 ## All Branches (updated at 01/06/2022)
 * 2021/10/26 AC-Homework-A1
 * 2021/10/31 AC-Homework-A5
-* 2022/01/06 AC-Homework-A6
+* 2022/01/06 AC-Homework-Final
 
 
 ## Other Screenshots (updated at 01/06/2022)
