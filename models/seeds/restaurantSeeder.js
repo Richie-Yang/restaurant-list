@@ -8,9 +8,10 @@ const db = require('../../config/mongoose')
 const User = require('../user')
 const Restaurant = require('../restaurant.js')
 const SEED_RESTAURANTS = require('../../restaurant.json')
+const user = require('../user')
 
 
-// define user data with array structure 
+// define user data with array structure
 const SEED_USERS = [
   {
     email: 'user1@example.com',
@@ -29,10 +30,37 @@ const SEED_USERS = [
 
 // Report the result status once connection is attempted
 db.once('open', async () => {
+  ////////////////// Remove Exist Seed Data In DB //////////////////
+  console.log('\nstart removing exist seed data in database')
+
+  // find exist both seed-users and seed-restaurants, then remove all
+  // create email array for conditional search
+  const emailArray = SEED_USERS.map(item => ({ email: item.email }))
+  const users = await User.find({ $or: emailArray })
+
+  // if seed-user found, then proceed to find any associated restaurants
+  if (users.length) {
+    // create userId array for conditional search
+    const userIdArray = users.map(item => ({ userId: item._id }))
+    const restaurants = await Restaurant.find({ $or: userIdArray })
+
+    await Promise.all([
+      ...users.map(user => user.remove()),
+      ...restaurants.map(restaurant => restaurant.remove())
+    ])
+  }
+
+  console.log('finish removing exist seed data in database')
+  ////////////////// Remove Exist Seed Data In DB //////////////////
+
+
+
+  ////////////////// Generate New Seed Data In DB //////////////////
+  console.log('start generating new seed data in database')
 
   // create two seed users and return their data for later use
-  const SEED_USERS_ID = await Promise.all(
-    Array.from(Array(2), (_, i) => {
+  const SEED_USERS_ARRAY = await Promise.all(
+    Array.from(Array(SEED_USERS.length), (_, i) => {
         const { email, password } = SEED_USERS[i]
         const index = email.indexOf('@')
         const name = email.slice(0, index)
@@ -58,11 +86,11 @@ db.once('open', async () => {
           phone, google_map, rating, description
         } = seedRestaurant
 
-        // append userId from previous SEED_USERS_ID
+        // append userId from previous SEED_USERS_ARRAY
         const data = {
           name, category, image, location,
           phone, google_map, rating, description,
-          userId: SEED_USERS_ID[x]._id
+          userId: SEED_USERS_ARRAY[x]._id
         }
 
         // push back to restaurantData array
@@ -77,6 +105,11 @@ db.once('open', async () => {
       return Restaurant.create(SEED_USERS[i].restaurantData)
     })
   )
+
+  console.log('finish generating new seed data in database\n')
+  ////////////////// Generate New Seed Data In DB //////////////////
+
+
 
   console.log('done!')
   process.exit()
