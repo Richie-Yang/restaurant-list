@@ -6,10 +6,10 @@ Recenetly we implemenmted authentication/authorization feature into this project
 
 
 ## Screenshots (updated at 01/06/2022)
+### login view
+![Login Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/final-restaurant-login.jpg)
 ### index view
 ![Index Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/final-restaurant-index.jpg)
-### show view
-![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-show.jpg)
 
 
 ## Features (updated at 01/06/2022)
@@ -78,6 +78,8 @@ PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmj
 
 
 ## Other Screenshots (updated at 01/06/2022)
+### show view
+![Show Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-show.jpg)
 ### new view
 ![New Page](https://github.com/Richie-Yang/restaurant-list/blob/main/public/img/a6-restaurant-new.jpg)
 ### edit view
@@ -103,6 +105,4 @@ PS: If you don't have nodemon installed, please check [Nodemon](https://www.npmj
 
 
 ## Contributor
-::: warning
 [Richie](https://github.com/Richie-Yang) :wink:
-:::
